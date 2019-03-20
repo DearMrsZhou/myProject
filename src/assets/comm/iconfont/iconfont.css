@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1073258 */
+  src: url('//at.alicdn.com/t/font_1073258_rd7wyt5w6mf.eot');
+  src: url('//at.alicdn.com/t/font_1073258_rd7wyt5w6mf.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1073258_rd7wyt5w6mf.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1073258_rd7wyt5w6mf.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1073258_rd7wyt5w6mf.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1073258_rd7wyt5w6mf.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconvip:before {
+  content: "\e611";
+}
+
+.iconxitong:before {
+  content: "\e60e";
+}
+
+.iconshouye:before {
+  content: "\e6bc";
+}
+
+.iconhuiyuan:before {
+  content: "\e8a6";
+}
+
+.iconshangpin:before {
+  content: "\e635";
+}
+
+.icondingdan:before {
+  content: "\e612";
+}
+
+.iconbaobiaoguanli:before {
+  content: "\e603";
+}
+
+.iconactivity-line:before {
+  content: "\e641";
+}
+
+.icondanmokuai:before {
+  content: "\e610";
+}
+
