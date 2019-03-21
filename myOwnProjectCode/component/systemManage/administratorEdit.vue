@@ -230,13 +230,11 @@ export default {
     }
   },
   created:function () {
-    // 把职位列表渲染出来
-    let positionList=JSON.parse(localStorage.getItem('positionList'));
-   /* console.log(positionList)*/
-    this.radioArr=positionList;
-    // console.log(positionList)
-    // 如果是编辑事件，直接拿本地存储的数据
-    var editAdmin=JSON.parse(localStorage.getItem('editAdmin'))
+    // 把职位列表从路由参数渲染出来
+      let positionList=this.$route.params.myAdminData
+      this.radioArr=positionList;
+    // 判断是否是编辑事件，前一个页面会传参数过来，如果是编辑事件，直接拿路由参数的数据
+    var editAdmin=this.$route.params.adminStatus
     if(editAdmin){
       for(var i = 0 ; i < editAdmin.length ;i ++){
         this.user_name=editAdmin[i].admin_name
@@ -250,7 +248,6 @@ export default {
       }
       // 设置变量的值，判断修改还是新增的提示信息
       this.isInLocal=true
-      localStorage.removeItem('editAdmin');
     }
   }
 }

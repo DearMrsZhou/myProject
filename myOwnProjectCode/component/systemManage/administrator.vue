@@ -126,9 +126,11 @@ export default {
   },
   methods:{
     addAdmin: function () {
+        // 添加管理员，进行路由跳转
       this.$router.push('/administratorEdit')
     },
     toSearchData:function(){
+        //模糊查询，进行搜索
       let user_name=this.searchUser_name;
       let real_name=this.searchReal_name;
       this.$http.post('/api/systemManage/searchAdmin',{
@@ -136,7 +138,7 @@ export default {
         searchReal_name:real_name
       })
         .then(res=>{
-          console.log(res.data)
+            //如果没数据，提示
           var myData=res.data;
           if(myData.length===0){
             this.$message('查询无果')
@@ -160,16 +162,20 @@ export default {
           break;
         }
       }
-      localStorage.setItem('editAdmin',JSON.stringify(newArr))
-      localStorage.setItem('editTime','ok')
-      this.$router.push('/administratorEdit')
+      /*进行路由传参*/
+      this.$router.push('/administratorEdit',{
+          myAdminData:newArr,
+          adminStatus:'ok'
+      })
     },
+      //删除数据
     deleteAdmin: function (index) {
       this.$confirm('是否要删除该条数据?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+          //根据索引找到数据数组对应的一项，进行删除
         for(var i = 0 ; i < this.tableData.length ; i++){
           if(index===this.tableData[i].admin_id){
             this.$http.post('/api/systemManage/deleteAdmin',{
@@ -200,10 +206,10 @@ export default {
         });
       });
     },
+      /*渲染数据*/
     getData:function () {
       this.$http.post('/api/systemManage/getAdministrator')
         .then(res=>{
-          console.log(res.data)
           let myData=res.data[0];
           let myData2=res.data[1];
           this.tableData=myData;

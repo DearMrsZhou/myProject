@@ -112,8 +112,10 @@ export default {
     }
   },
   created (){
-    var editDelivery=JSON.parse(localStorage.getItem('editDelivery'))
-    if(editDelivery.length!==0){
+      /*拿路由参数*/
+    var editDelivery=this.$route.params.deliveryData
+      /*如果此数据存在，表明是编辑事件*/
+    if(editDelivery){
       for(var i = 0 ; i < editDelivery.length ;i ++){
         this.input=editDelivery[i].trans_name
         this.radioValue=editDelivery[i].trans_status
@@ -121,7 +123,6 @@ export default {
       }
       // 设置变量的值，判断修改还是新增的提示信息
       this.isInLocal=true
-      localStorage.removeItem('editDelivery');
     }
 
   }

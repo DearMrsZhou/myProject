@@ -145,9 +145,11 @@
             break;
           }
         }
-        localStorage.setItem('roleData',JSON.stringify(newArr));
+        // localStorage.setItem('roleData',JSON.stringify(newArr));
         this.isInLocalStorage=true
-        this.$router.push('/roleEdit')
+        this.$router.push('/roleEdit',{
+            roleData:newArr
+        })
       },
       deleteRole: function (index) {
         this.$confirm('是否要删除该条数据?', '提示', {

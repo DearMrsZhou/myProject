@@ -83,12 +83,15 @@
       }
     },
     methods: {
+        /*编辑支付方式*/
       configure: function (index) {
         var myData=this.tableData;
         for(var i = 0 ; i < myData.length ; i++){
           if(index===myData[i].pay_id){
-            localStorage.setItem('payConfig',JSON.stringify(myData[i]));
-            this.$router.push('/payConfig');
+            // localStorage.setItem('payConfig',JSON.stringify(myData[i]));
+            this.$router.push('/payConfig',{
+                payConfig:myData[i]
+            });
             break;
           }
         }

@@ -94,7 +94,7 @@
     methods:{
       handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
-        console.log(this.imgUrl)
+        /*console.log(this.imgUrl)*/
       },
       upLoadData: function(){
         let isOk=true
@@ -144,6 +144,7 @@
         }
       },
       myUpLoad:function (params) {
+          /*图片文件上传，使用formData格式化数据*/
         let fileObj=params.file
         // console.log(fileObj)
         let fd = new FormData();
@@ -155,15 +156,16 @@
         };
         this.$http.post('ipa/cart/uploadPic',fd,config)
           .then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             this.imageUrl=res.data.imageUrl
           })
       }
     },
 
     created:function () {
-      let payData=JSON.parse(localStorage.getItem('payConfig'));
+      let payData=this.$route.params.payConfig
       // console.log(payData)
+        /*如果数据存在，就确定为编辑事件*/
       if(payData){
         this.isInLocal=true;
         this.pay_name=payData.pay_name;

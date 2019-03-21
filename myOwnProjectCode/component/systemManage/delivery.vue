@@ -92,9 +92,7 @@ export default {
     }
   },
   methods: {
-    btn1: function (index) {
-      console.log(index)
-    },
+      /*进行查询的方法*/
     toSearch: function () {
       let selectValue=this.selectValue
       if(selectValue.length!==0){
@@ -117,6 +115,7 @@ export default {
           this.tableData=this.DataTransfer(res.data)
         })
     },
+      /*拿到分页的总页数以及所有的数据*/
     getALL: function () {
       this.$http.post('/api/systemManage/allData')
         .then((res)=>{
@@ -172,8 +171,9 @@ export default {
           break;
         }
       }
-      localStorage.setItem('editDelivery',JSON.stringify(newArr))
-      this.$router.push('/editDelivery')
+      this.$router.push('/editDelivery',{
+          deliveryData:newArr
+      })
     },
     add: function () {
       this.$router.push('/editDelivery')
@@ -190,10 +190,12 @@ export default {
       }
       return newArr;
     },
+      /*获取数据*/
     getData: function () {
       this.$http.post('/api/systemManage/getAllDeliveryData')
         .then((res)=>{
           var myData=res.data[0]
+            /*拿到页数值*/
           this.countPage=Math.ceil((res.data[1][0].trans_Length)/4)
           // newOption渲染左上角的下拉框的值
           var newOptions=[];
